@@ -28,6 +28,10 @@
     padding-left: 10px;
 }
 
+.line-light p span:nth-child(3) {
+    padding-left: 10px;
+}
+
 .active{
     background-color:rgb(172, 239, 241);
 }

@@ -33,6 +33,14 @@ export const GlobalActions = {
     const algorithmGenerator = controller.run();
     graph = newGraph;
     tree = newTree;
+    const collapseController = {};
+    for (const codeBlockName of Object.keys(pseudocode)) {
+      if (codeBlockName === 'Main') {
+        collapseController[codeBlockName] = true;
+      } else {
+        collapseController[codeBlockName] = false;
+      }
+    }
 
     return {
       id: params.name,
@@ -45,6 +53,7 @@ export const GlobalActions = {
       graph,
       finished: false,
       tree, // store a tree in the state because we want to search that particular tree after insertion
+      collapse: collapseController,
     };
   },
   // No expected params
@@ -58,6 +67,14 @@ export const GlobalActions = {
       // If we just finished the algorithm, leave the bookmark on the last line
       bookmark: result.done ? state.bookmark : result.value,
       finished: result.done,
+    };
+  },
+  COLLAPSE: (state, codeblockname) => {
+    const result = state.collapse;
+    result[codeblockname] = !result[codeblockname];
+    return {
+      ...state,
+      collapse: result,
     };
   },
 };

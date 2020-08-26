@@ -1,7 +1,7 @@
 /* eslint-disable quote-props */
 /* eslint-disable no-undef */
 
-/*
+
 import React from 'react';
 import { Global } from './LineNumHighLight';
 
@@ -29,4 +29,3 @@ describe('LineNumHighLight', () => {
     );
   });
 });
-*/

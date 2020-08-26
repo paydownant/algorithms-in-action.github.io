@@ -101,19 +101,21 @@ let c = 0;
 
 // Add bookmark and indentation recurvely.
 function addBookmark(json, name, indentation) {
-  json[name].forEach((line) => {
-    c += 1;
-    // eslint-disable-next-line no-param-reassign
-    line['indentation'] += indentation;
-    if (line['ref'].length > 0) {
+  if (json[name] instanceof Array) {
+    json[name].forEach((line) => {
+      c += 1;
       // eslint-disable-next-line no-param-reassign
-      line['bookmark'] = c;
-      addBookmark(json, line['ref'], line['indentation']);
-    } else {
-      // eslint-disable-next-line no-param-reassign
-      line['bookmark'] = c;
-    }
-  });
+      line['indentation'] += indentation;
+      if (line['ref'].length > 0) {
+        // eslint-disable-next-line no-param-reassign
+        line['bookmark'] = c;
+        addBookmark(json, line['ref'], line['indentation']);
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        line['bookmark'] = c;
+      }
+    });
+  }
 }
 
 export default function parse(input) {

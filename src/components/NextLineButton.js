@@ -26,7 +26,7 @@ function NextLineButton() {
           style={disabled ? { pointerEvents: 'none' } : {}}
           onClick={() => dispatch(GlobalActions.NEXT_LINE)}
         >
-          Next Line 
+          Next Line
         </button>
       </span>
     </Tooltip>

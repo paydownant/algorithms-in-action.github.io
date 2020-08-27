@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ReactMarkDown from 'react-markdown/with-html';
 import toc from 'remark-toc';
 
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext } from '../../context/GlobalState';
 import CodeBlock from '../markdown/code-block';
 
 

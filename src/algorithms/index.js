@@ -3,7 +3,7 @@ import React from 'react';
 import * as Explanation from './explanations';
 import binaryTreeSearch from './binaryTreeSearch';
 import binaryTreeInsertion from './binaryTreeInsertion';
-import * as Param from '../components/parameters';
+import * as Param from './parameters';
 /*
  This file lists all the algorithms in the program, and imports
  them from the relevant file. Follow the example below for how to

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-named-as-default-member */
 import React, { useContext } from 'react';
 // eslint-disable-next-line import/no-named-as-default
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext } from '../../context/GlobalState';
 import Explanation from './Explanation';
 import Pseudocode from './Pseudocode';
 

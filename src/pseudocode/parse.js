@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable linebreak-style */
 /* eslint-disable dot-notation */
 /* eslint-disable linebreak-style */
@@ -100,19 +101,19 @@ let c = 0;
 
 
 // Add bookmark and indentation recurvely.
-function addBookmark(json, name, indentation) {
+function addBookmark(json, name, indentation, refBookmark) {
   if (json[name] instanceof Array) {
     json[name].forEach((line) => {
       c += 1;
-      // eslint-disable-next-line no-param-reassign
       line['indentation'] += indentation;
       if (line['ref'].length > 0) {
-        // eslint-disable-next-line no-param-reassign
+        const tempBookmark = c;
         line['bookmark'] = c;
-        addBookmark(json, line['ref'], line['indentation']);
+        line['refBookmark'] = refBookmark;
+        addBookmark(json, line['ref'], line['indentation'], tempBookmark);
       } else {
-        // eslint-disable-next-line no-param-reassign
         line['bookmark'] = c;
+        line['refBookmark'] = refBookmark;
       }
     });
   }
@@ -122,6 +123,6 @@ export default function parse(input) {
   const rawCode = removeLineContinuation(input);
   const json = extractCodeBlock(rawCode);
   c = 0;
-  addBookmark(json, 'Main', 0);
+  addBookmark(json, 'Main', 0, 0);
   return json;
 }

@@ -19,7 +19,7 @@ test('single basic procedure', () => {
 `)).toEqual(
     {
       Main: [{
-        bookmark: 1, code: 'while t not Empty', explanation: '', indentation: 1, ref: '',
+        bookmark: 1, code: 'while t not Empty', explanation: '', indentation: 1, ref: '', refBookmark: 0,
       }],
     },
   );
@@ -39,7 +39,7 @@ test('procedure with explanation', () => {
 `)).toEqual(
     {
       Main: [{
-        bookmark: 1, code: 'while t not Empty', explanation: ' We have found a node with the desired key k.', indentation: 1, ref: '',
+        bookmark: 1, code: 'while t not Empty', explanation: ' We have found a node with the desired key k.', indentation: 1, ref: '', refBookmark: 0,
       }],
     },
   );
@@ -62,10 +62,10 @@ test('procedure with ref', () => {
     \\Code}
 `)).toEqual({
     Insert: [{
-      bookmark: 2, code: 'something', explanation: '', indentation: 2, ref: '',
+      bookmark: 2, code: 'something', explanation: '', indentation: 2, ref: '', refBookmark: 0,
     }],
     Main: [{
-      bookmark: 1, code: 'Ref thing', explanation: '', indentation: 1, ref: 'Insert',
+      bookmark: 1, code: 'Ref thing', explanation: '', indentation: 1, ref: 'Insert', refBookmark: 1,
     }],
   });
 });

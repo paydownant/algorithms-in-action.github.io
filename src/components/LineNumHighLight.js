@@ -11,6 +11,7 @@ import { GlobalActions } from '../context/actions';
 // eslint-disable-next-line import/named
 import '../styles/LineNumHighLight.css';
 import findRef from '../pseudocode/findRef';
+import findCodeBlock from '../pseudocode/findCodeBlock';
 
 let codeBlocks = {};
 
@@ -43,7 +44,7 @@ const addCollapse = (algorithm1, dispatch1, codeBlocks1, currentBookmark, blockN
         <p
           key={i}
           // eslint-disable-next-line react/destructuring-assignment
-          className={currentBookmark.step === value ? 'active' : ''}
+          className={currentBookmark === value ? 'active' : ''}
           index={i}
           role="presentation"
         >
@@ -67,7 +68,7 @@ const addCollapse = (algorithm1, dispatch1, codeBlocks1, currentBookmark, blockN
         <p
           key={i}
           // eslint-disable-next-line react/destructuring-assignment
-          className={currentBookmark.step === value ? 'active' : ''}
+          className={currentBookmark === value ? 'active' : ''}
           index={i}
           role="presentation"
         >
@@ -86,13 +87,15 @@ const LineNumHighLight = () => {
   codeBlocks = {};
   i = 0;
   addIndentation(algorithm.pseudocode, 'Main');
+  const currentBookmark = findCodeBlock(algorithm, algorithm.bookmark.step);
+  console.log(currentBookmark)
 
   /* render data */
 
   return (
     <div className="line-light">
       <div className="code-container">
-        {addCollapse(algorithm, dispatch, codeBlocks, algorithm.bookmark, 'Main')}
+        {addCollapse(algorithm, dispatch, codeBlocks, currentBookmark, 'Main')}
       </div>
     </div>
   );

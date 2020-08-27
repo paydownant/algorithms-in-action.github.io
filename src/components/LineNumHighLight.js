@@ -4,6 +4,8 @@
 /* eslint-disable dot-notation */
 /* eslint-disable linebreak-style */
 import React, { useContext } from 'react';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { GlobalContext } from '../context/GlobalState';
 import { GlobalActions } from '../context/actions';
 // eslint-disable-next-line import/named
@@ -47,8 +49,9 @@ const addCollapse = (algorithm1, dispatch1, codeBlocks1, currentBookmark, blockN
         >
           <span>{i + 1}</span>
           <span>
-            <button onClick={() => { dispatch1(GlobalActions.COLLAPSE, ref); }}>
-              {algorithm1.collapse[ref] ? '-' : '+'}
+            <button className="expand-collopse-button" onClick={() => { dispatch1(GlobalActions.COLLAPSE, ref); }}>
+              {algorithm1.collapse[ref] ? <ChevronRightIcon style={{ fontSize: 12 }} />
+                : <ExpandMoreIcon style={{ fontSize: 12 }} />}
             </button>
           </span>
           <span>{key}</span>

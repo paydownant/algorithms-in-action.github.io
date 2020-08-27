@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
-import findBookmark from '../../pseudocode/findBookmark';
+import findBookmark from '../../utils/pseudocode/findBookmark';
 
 function LineExplanation() {
   const { algorithm } = useContext(GlobalContext);

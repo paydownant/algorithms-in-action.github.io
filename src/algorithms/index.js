@@ -1,7 +1,7 @@
 /* eslint quote-props: 0 */
 import React from 'react';
 import * as Explanation from './explanations';
-import binaryTreeSearch from './BST_Search';
+import BinarySearchTree from './BST_Search';
 import binaryTreeInsertion from './BST_Insert';
 import * as Param from '../components/parameters';
 /*
@@ -20,10 +20,14 @@ const algorithms = {
     category: 'Graphs',
     param: <Param.BSTParam />,
     explanation: Explanation.BSTExp,
-    controller: {
-      insertion: binaryTreeInsertion,
-      search: binaryTreeSearch,
-    },
+    controller: BinarySearchTree,
+  },
+  'binaryTreeInsertion': {
+    name: 'Binary Search Tree - Insertion',
+    category: 'Graphs',
+    param: <Param.BSTParam />,
+    explanation: Explanation.BSTExp,
+    controller: binaryTreeInsertion,
   },
   'quickSort': {
     name: 'Quick Sort',

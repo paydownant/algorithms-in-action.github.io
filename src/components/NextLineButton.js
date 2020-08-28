@@ -1,5 +1,3 @@
-/* eslint-disable no-prototype-builtins */
-/* eslint-disable no-unused-vars */
 // eslint-disable-next-line import/named
 import React, { useContext, useState, useEffect } from 'react';
 import { Tooltip } from '@material-ui/core';
@@ -13,13 +11,13 @@ function NextLineButton() {
 
   const [disabled, setDisabled] = useState(true);
   useEffect(() => {
-    if (algorithm.hasOwnProperty('visualisers')) {
+    if (Object.keys(algorithm.tree).length) {
       setDisabled(false);
     }
-  }, [algorithm]);
+  }, [algorithm.tree]);
 
   return (
-    <Tooltip title="Please run the algorithm first" disableHoverListener={!disabled}>
+    <Tooltip title="Please insert nodes first" disableHoverListener={!disabled}>
       <span>
         <button
           type="button"

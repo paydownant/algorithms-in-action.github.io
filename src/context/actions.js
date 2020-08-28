@@ -1,30 +1,14 @@
-/* eslint-disable no-console */
 /* eslint-disable max-len */
 import algorithms from '../algorithms';
-import Chunker from './chunker';
 
-const DEFAULT_ALGORITHM = 'binarySearchTree';
+const DEFAULT_ALGORITHM = 'binaryTreeInsertion';
 
 // At any time the app may call dispatch(action, params), which will trigger one of
 // the following functions. Each comment shows the expected properties in the
 // params argument.
 export const GlobalActions = {
 
-  // load an algorithm by returning its relevant components
-  LOAD_ALGORITHM: (state, params) => {
-    const data = algorithms[params.name];
-    const { param, name, explanation } = data;
-
-    return {
-      id: params.name,
-      name,
-      explanation,
-      param,
-    };
-  },
-
-  // run an algorithm by executing the algorithm
-  RUN_ALGORITHM: (state, params) => {
+  LOAD_ALGORITHM: (state, params, nodes, target) => {
     const data = algorithms[params.name];
     const {
       param, controller, name, explanation,
@@ -72,7 +56,6 @@ export const GlobalActions = {
       collapse: collapseController,
     };
   },
-
   // No expected params
   NEXT_LINE: (state) => {
     if (state.finished) {
@@ -103,5 +86,5 @@ export function dispatcher(state, setState) {
 }
 
 export function initialState() {
-  return GlobalActions.LOAD_ALGORITHM(undefined, { name: DEFAULT_ALGORITHM, nodes: [] });
+  return GlobalActions.LOAD_ALGORITHM(undefined, { name: DEFAULT_ALGORITHM }, [], undefined);
 }

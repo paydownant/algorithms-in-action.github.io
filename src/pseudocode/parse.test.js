@@ -62,10 +62,10 @@ test('procedure with ref', () => {
     \\Code}
 `)).toEqual({
     Insert: [{
-      bookmark: 2, code: 'something', explanation: '', indentation: 2, ref: '', refBookmark: 0,
+      bookmark: 2, code: 'something', explanation: '', indentation: 2, ref: '', refBookmark: 1,
     }],
     Main: [{
-      bookmark: 1, code: 'Ref thing', explanation: '', indentation: 1, ref: 'Insert', refBookmark: 1,
+      bookmark: 1, code: 'Ref thing', explanation: '', indentation: 1, ref: 'Insert', refBookmark: 0,
     }],
   });
 });

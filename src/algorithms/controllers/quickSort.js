@@ -1,20 +1,22 @@
+
 function partition(a, l, r){
 	// Choose pivot
-	pivot = a[l]
+	pivot = a[r]
 	while(l < r) {
-		// Repeatedly decrement r until A[r] <= pivot or r < l
-		while(l<r&&pivot<=a[r])
-			r--;
-		// Swap
-		a[l] = a[r];
 		// Repeatedly increment l until A[l] >= pivot
 		while(l<r && a[l]<=pivot)
 			l++;
 		// Swap
 		a[r] = a[l];
+		// Repeatedly decrement r until A[r] <= pivot or r < l
+		while(l<r&&pivot<=a[r])
+			r--;
+		// Swap
+		a[l] = a[r];
+
 	}
-	a[l] = pivot;
-	return l;
+	a[r] = pivot;
+	return r;
 }
 	
 function QuickSort(a,left, right){

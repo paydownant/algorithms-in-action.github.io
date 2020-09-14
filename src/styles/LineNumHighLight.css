@@ -9,14 +9,6 @@
     cursor:pointer;
 }
 
-.line-explanation-button{
-    border: 0;
-    margin-left: -26px;
-    border-radius: 50%;
-    outline:none;
-    cursor:pointer; 
-}
-
 .line-light {
     width    : 100%;
     height: 600px;

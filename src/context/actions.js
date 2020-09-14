@@ -63,14 +63,6 @@ export const GlobalActions = {
         collapseController[codeBlockName] = false;
       }
     }
-    const lineExplanationController = {};
-    for (const codeBlockName of Object.keys(procedurePseudocode)) {
-      for (const line of procedurePseudocode[codeBlockName]) {
-        if (line.explanation.length > 0) {
-          lineExplanationController[line.bookmark] = false;
-        }
-      }
-    }
     return {
       id: params.name,
       name,
@@ -83,7 +75,6 @@ export const GlobalActions = {
       visualisers: chunker.visualisers,
       collapse: collapseController,
       playing: false,
-      lineExplanation: lineExplanationController
     };
   },
 
@@ -125,15 +116,6 @@ export const GlobalActions = {
     return {
       ...state,
       collapse: result,
-    };
-  },
-
-  LINE_EXPLANATION: (state, bookmark) => {
-    const result = state.lineExplanation;
-    result[bookmark] = !result[bookmark];
-    return {
-      ...state,
-      lineExplanation: result,
     };
   },
 };

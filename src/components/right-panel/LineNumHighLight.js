@@ -27,11 +27,11 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
   for (const line of algorithm.pseudocode[blockName]) {
     i += 1;
     let button = null;
-    if (line.bookmark in Object.keys(algorithm.lineExplanation)) {
-      button = <button className="line-explanation-button" onClick={() => { dispatch(GlobalActions.LINE_EXPLANATION, line.bookmark); }}>
-                {algorithm.lineExplanation[line.bookmark]
-                  ? <ExpandMoreIcon style={{ fontSize: 12 }} />
-                  : <ChevronRightIcon style={{ fontSize: 12 }} />}
+    if (algorithm.collapse[blockName] && line.lineExplanButton !== undefined) {
+      button = <button className="line-explanation-button" onClick={() => { dispatch(GlobalActions.LINE_EXPLANATION, line.lineExplanButton.id); }}>
+                {line.lineExplanButton.state
+                  ? <ExpandMoreIcon style={{ fontSize: 10 }} />
+                  : <ChevronRightIcon style={{ fontSize: 10 }} />}
                </button>;
     }
     if (line.ref) {
@@ -51,8 +51,8 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
               }}
             >
               {algorithm.collapse[line.ref]
-                ? <ExpandMoreIcon style={{ fontSize: 12 }} />
-                : <ChevronRightIcon style={{ fontSize: 12 }} />}
+                ? <ExpandMoreIcon style={{ fontSize: 10 }} />
+                : <ChevronRightIcon style={{ fontSize: 10 }} />}
             </button>
           </span>
           <span>{line.code}</span>
@@ -81,13 +81,20 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
         </p>,
       );
     }
+    if (button != null && line.lineExplanButton.state) {
+      codeLines.push(
+        <p>
+          <span> </span>
+          <span>{line.explanation}</span>
+        </p>,
+      );
+    }
   }
   return { index: i, cl: codeLines };
 }
 
 const LineNumHighLight = () => {
   const { algorithm, dispatch } = useContext(GlobalContext);
-
   return (
     <div className="line-light">
       <div className="code-container">

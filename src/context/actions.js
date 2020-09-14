@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 /* eslint-disable max-len */
 import algorithms from '../algorithms';
 import Chunker from './chunker';
@@ -63,11 +64,12 @@ export const GlobalActions = {
         collapseController[codeBlockName] = false;
       }
     }
-    const lineExplanationController = {};
+    let index = 0;
     for (const codeBlockName of Object.keys(procedurePseudocode)) {
       for (const line of procedurePseudocode[codeBlockName]) {
         if (line.explanation.length > 0) {
-          lineExplanationController[line.bookmark] = false;
+          line['lineExplanButton'] = { id: index, state: false };
+          index += 1;
         }
       }
     }
@@ -83,7 +85,6 @@ export const GlobalActions = {
       visualisers: chunker.visualisers,
       collapse: collapseController,
       playing: false,
-      lineExplanation: lineExplanationController
     };
   },
 
@@ -93,7 +94,6 @@ export const GlobalActions = {
     do {
       result = state.chunker.next();
     } while (!result.finished && !isBookmarkVisible(state.pseudocode, state.collapse, result.bookmark));
-    console.log(result.bookmark);
     return {
       ...state,
       ...result,
@@ -128,14 +128,25 @@ export const GlobalActions = {
     };
   },
 
-  LINE_EXPLANATION: (state, bookmark) => {
-    const result = state.lineExplanation;
-    result[bookmark] = !result[bookmark];
+  LINE_EXPLANATION: (state, index) => {
+    const result = state.pseudocode;
+    for (const codeBlockName of Object.keys(result)) {
+      for (const line of result[codeBlockName]) {
+        if (line.lineExplanButton !== undefined && line.lineExplanButton.id === index) {
+          line.lineExplanButton.state = !line.lineExplanButton.state;
+          return {
+            ...state,
+            pseudocode: result,
+          };
+        }
+      }
+    }
     return {
       ...state,
-      lineExplanation: result,
+      pseudocode: result,
     };
   },
+
 };
 
 export function dispatcher(state, setState) {

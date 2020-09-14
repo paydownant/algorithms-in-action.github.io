@@ -8,6 +8,9 @@ function removeLineContinuation(input) {
   let builtLine = '';
   for (const line of lines) {
     builtLine = `${line.trim()}`;
+    if (builtLine.indexOf('//') >= 0) {
+      builtLine = builtLine.substring(0, builtLine.indexOf('//'));
+    }
     if (builtLine !== '') {
       output.push(builtLine);
     }
@@ -114,7 +117,7 @@ export default function parse(input) {
   if (Object.keys(rawCodeBlocks).length > 0) {
     const indentedCodeBlocks = {};
     addIndentation(rawCodeBlocks, 'Main', 0, indentedCodeBlocks);
-    console.log(indentedCodeBlocks)
+    console.log(indentedCodeBlocks);
     return indentedCodeBlocks;
   } else {
     return rawCodeBlocks;

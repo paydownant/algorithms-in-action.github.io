@@ -11,7 +11,6 @@ function Pseudocode() {
     show ? (
       <>
         <LineNumHighLight />
-        <LineExplanation />
       </>
     ) : null
   );

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-wrap-multilines */
 /* eslint-disable no-loop-func */
 /* eslint-disable react/button-has-type */
 /* eslint-disable dot-notation */
@@ -24,6 +26,14 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
   let codeLines = [];
   for (const line of algorithm.pseudocode[blockName]) {
     i += 1;
+    let button = null;
+    if (line.bookmark in Object.keys(algorithm.lineExplanation)) {
+      button = <button className="line-explanation-button" onClick={() => { dispatch(GlobalActions.LINE_EXPLANATION, line.bookmark); }}>
+                {algorithm.lineExplanation[line.bookmark]
+                  ? <ExpandMoreIcon style={{ fontSize: 12 }} />
+                  : <ChevronRightIcon style={{ fontSize: 12 }} />}
+               </button>;
+    }
     if (line.ref) {
       codeLines.push(
         <p
@@ -46,6 +56,9 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
             </button>
           </span>
           <span>{line.code}</span>
+          <span>
+            {button}
+          </span>
         </p>,
       );
       if (algorithm.collapse[line.ref]) {
@@ -62,6 +75,9 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
         >
           <span>{i}</span>
           <span>{line.code}</span>
+          <span>
+            {button}
+          </span>
         </p>,
       );
     }

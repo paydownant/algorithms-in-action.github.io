@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TransitiveClosureParam() {
+function TCParam() {
   return (
     <div>
       Transitive Closure Param
@@ -8,4 +8,4 @@ function TransitiveClosureParam() {
   );
 }
 
-export default TransitiveClosureParam;
+export default TCParam;

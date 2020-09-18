@@ -7,6 +7,7 @@
 import React, { useContext } from 'react';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import DescriptionIcon from '@material-ui/icons/Description';
 import { GlobalContext } from '../../context/GlobalState';
 import { GlobalActions } from '../../context/actions';
 import '../../styles/LineNumHighLight.css';
@@ -29,9 +30,7 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
     let button = null;
     if (algorithm.collapse[blockName] && line.lineExplanButton !== undefined) {
       button = <button className="line-explanation-button" onClick={() => { dispatch(GlobalActions.LINE_EXPLANATION, line.lineExplanButton.id); }}>
-                {line.lineExplanButton.state
-                  ? <ExpandMoreIcon style={{ fontSize: 10 }} />
-                  : <ChevronRightIcon style={{ fontSize: 10 }} />}
+                <DescriptionIcon style={{ fontSize: 10 }} />
                </button>;
     }
     if (line.ref) {

@@ -18,6 +18,18 @@ $rightNumWidth: 36px;
     border: 1px solid #c1c1c1;
 }
 
+.line-explanation-button{
+    border: none;
+    outline:none;
+    margin-left: (1 *$codePad) - 2px;
+    cursor:pointer;
+
+    @include border-radius(2px);
+    background-color: $white;
+    color: #343434;
+    border: 1px solid #c1c1c1;
+}
+
 .line-light {
     width: 100%;
     height: 700px;

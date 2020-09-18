@@ -55,11 +55,17 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
             </button>
           </span>
           <span>{line.code}</span>
-          <span>
-            {button}
-          </span>
+          <span>{button}</span>
         </p>,
       );
+      if (button != null && line.lineExplanButton.state) {
+        codeLines.push(
+          <p>
+            <span> </span>
+            <span>{line.explanation}</span>
+          </p>,
+        );
+      }
       if (algorithm.collapse[line.ref]) {
         const subblock = pseudocodeBlock(algorithm, dispatch, line.ref, i);
         i = subblock.index;
@@ -74,19 +80,17 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
         >
           <span>{i}</span>
           <span>{line.code}</span>
-          <span>
-            {button}
-          </span>
+          <span>{button}</span>
         </p>,
       );
-    }
-    if (button != null && line.lineExplanButton.state) {
-      codeLines.push(
-        <p>
-          <span> </span>
-          <span>{line.explanation}</span>
-        </p>,
-      );
+      if (button != null && line.lineExplanButton.state) {
+        codeLines.push(
+          <p>
+            <span> </span>
+            <span>{line.explanation}</span>
+          </p>,
+        );
+      }
     }
   }
   return { index: i, cl: codeLines };

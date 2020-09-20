@@ -54,8 +54,8 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
                 : <ChevronRightIcon style={{ fontSize: 10 }} />}
             </button>
           </span>
-          <span>{line.code}</span>
           <span>{button}</span>
+          <span>{line.code}</span>
         </p>,
       );
       if (button != null && line.lineExplanButton.state) {
@@ -79,8 +79,8 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
           role="presentation"
         >
           <span>{i}</span>
-          <span>{line.code}</span>
           <span>{button}</span>
+          <span>{line.code}</span>
         </p>,
       );
       if (button != null && line.lineExplanButton.state) {

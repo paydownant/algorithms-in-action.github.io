@@ -9,7 +9,7 @@ $rightNumWidth: 36px;
 .expand-collopse-button{
     border: none;
     outline:none;
-    margin-left: (-1 *$codePad) + 2px;
+    margin-left: (0.5 *$codePad) ;
     cursor:pointer;
 
     @include border-radius(2px);
@@ -21,7 +21,7 @@ $rightNumWidth: 36px;
 .line-explanation-button{
     border: none;
     outline:none;
-    margin-left: (1 *$codePad) - 2px;
+    margin-left: (1.5 *$codePad);
     cursor:pointer;
 
     @include border-radius(2px);
@@ -48,7 +48,6 @@ $rightNumWidth: 36px;
     white-space: pre;
 }
 
-
 .line-light p span:first-child {
     display: inline-block;
     background-color:$rightNumBgCol;
@@ -60,9 +59,8 @@ $rightNumWidth: 36px;
     
 }
 
-
-.line-light p span:nth-child(2) {
-    padding-left: $codePad;
+.line-light p span:nth-child(3) {
+    margin-left: (2.5*$codePad);
 }
 
 .active{

@@ -85,7 +85,7 @@ function pseudocodeBlock(algorithm, dispatch, blockName, lineNum) {
       );
       if (button != null && line.lineExplanButton.state) {
         codeLines.push(
-          <p>
+          <p className="explanation">
             <span> </span>
             <span>{line.explanation}</span>
           </p>,

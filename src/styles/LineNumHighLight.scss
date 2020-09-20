@@ -9,7 +9,7 @@ $rightNumWidth: 36px;
 .expand-collopse-button{
     border: none;
     outline:none;
-    margin-left: (0.5 *$codePad) ;
+    margin-left: (0.5 *$codePad)-4px;
     cursor:pointer;
 
     @include border-radius(2px);

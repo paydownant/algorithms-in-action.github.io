@@ -6,7 +6,7 @@ $rightButtonWidth: 24px;
 $containerTopBottomPad: 2%;
 
 .code-container{
-  font-family: Menlo, "Liberation Mono", Courier, monospace;
+  font-family: 'Inter', sans-serif;
   height: 100% - (2 * $containerTopBottomPad);
   padding: $containerTopBottomPad 0;
 }
